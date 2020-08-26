@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Assinar Termos de Adesão</title>
+    <title>Continuar Cadastro Administrador</title>
     <style>
       html,
       body,
       .container-global {
-        height: 100%
         margin: 0;
         padding: 0;
         background-color: #e3e7eb;
@@ -65,8 +64,7 @@
         padding: 0 1rem;
         margin: 1rem auto;
         background-color: #009cde;
-        color: white;
-        text-decoration: none;
+        color: white !important;
       }
 
       .logo {
@@ -92,7 +90,7 @@
       }
 
       .floating-div {
-        background-color: #009cde;
+        background-color: white;
         height: .3rem;
         width: 3rem;
         margin: auto;
@@ -103,7 +101,7 @@
     <div class="container-global">
       <div class="container">
         <img
-          src="https://marketing-image-production.s3.amazonaws.com/uploads/091b9619c93140d08742e46cebd747d2cd4e0804a31e31c26f9a00e3b5d52f748ca61f4c52cf2e67a66a71f7afe37530deeaedc5cb4f64137c79af22636929ac.png"
+          src="https://marketing-image-production.s3.amazonaws.com/uploads/8d141d1a4d73ee3227cef956d7c4ab006a8c51303e8f58fc875c314c8df4f0792bb8d37559c8a38f97b23863f628c8b9ae1c7f937f06cf82e13e4ec51980e731.png"
           alt="logo"
           class="logo"
         />
@@ -115,26 +113,23 @@
         <hr class="divider" />
 
         <p>
-          Encontramos alguns dados incorretos no seu cadastro <br />
-          da <strong>{{ corporation_name }}</strong> e já arrumamos para você.
-          Agora, os administradores <br />
-          da empresa precisam <strong>assinar o termo de adesão</strong> com os
-          dados corrigidos.
+          Você foi convidado para fazer parte do quadro de administradores <br /> 
+          da <strong>{{company_name}}</strong> na <strong>Sky.Simple</strong>.
         </p>
-        {{#if sign_url}}
+
         <hr class="divider" />
 
         <span
           target="_blank"
           class="approve-btn-container"
         >
-          <a class="approve-btn" style="height: 40px;" href="{{sign_url}}">
-            <div style="margin: auto; color: white !important">
-                ASSINAR TERMO DE ADESÃO
+          <a class="approve-btn" style="height: 40px;text-decoration:none;" href="{{url_approve}}">
+            <div style="margin: auto;">
+              ACEITAR CONVITE
             </div >
           </a>
         </span>
-        {{/if}}
+
         <!-- <a href={{uri_deny}} class="deny-btn">Não conheço esta empresa</a> -->
       </div>
 
