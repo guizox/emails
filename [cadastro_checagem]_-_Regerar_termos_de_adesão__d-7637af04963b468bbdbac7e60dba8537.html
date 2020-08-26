@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assinar Termos de Adesão</title>
+    <style>
+      html,
+      body,
+      .container-global {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .container-global {
+        text-align: center;
+        background-color: #e3e7eb;
+        font-family: "Arial Regular", Arial, Helvetica, sans-serif;
+        color: #606060;
+        padding-top: 2rem;
+      }
+
+      .container {
+        width: 600px;
+        margin: auto !important;
+        background-color: white;
+        -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        margin: 1rem;
+        padding: 2rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .divider {
+        opacity: 0.25;
+        border-color: #e8e8e8;
+        width: 50%;
+      }
+
+      .approve-btn-container {
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .centered {
+        justify-content: center;
+      }
+
+      .approve-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 300px;
+
+        align-items: center;
+        border-radius: 5px;
+
+        padding: 0 1rem;
+        margin: 1rem auto;
+        background-color: #4ddcbe;
+        color: white;
+        text-decoration: none;
+      }
+
+      .logo {
+        margin: 1rem auto;
+      }
+
+      p {
+        line-height: 24px;
+      }
+
+      .footer-main {
+        font-weight: 500;
+      }
+
+      .footer-secondary {
+        font-size: 0.7rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-global">
+      <div class="container">
+        <img
+          src="https://marketing-image-production.s3.amazonaws.com/uploads/091b9619c93140d08742e46cebd747d2cd4e0804a31e31c26f9a00e3b5d52f748ca61f4c52cf2e67a66a71f7afe37530deeaedc5cb4f64137c79af22636929ac.png"
+          alt="logo"
+          class="logo"
+        />
+        <p style="font-size: 27px;">
+          Olá <strong>{{ us_name }}</strong
+          >,
+        </p>
+
+        <hr class="divider" />
+
+        <p>
+          Encontramos alguns dados incorretos no seu cadastro <br />
+          da <strong>{{ corporation_name }}</strong> e já arrumamos para você.
+          Agora, os administradores <br />
+          da empresa precisam <strong>assinar o termo de adesão</strong> com os
+          dados corrigidos.
+        </p>
+        
+        {{#if sign_url}}
+          <hr class="divider" />
+      
+          <span
+            target="_blank"
+            class="approve-btn-container"
+          >
+            <a class="approve-btn" style="height: 40px;" href="{{sign_url}}">
+              <div style="margin: auto; color: white !important">
+                  ASSINAR TERMO DE ADESÃO
+              </div >
+            </a>
+          </span>
+        {{/if}}
+
+        <!-- <a href={{deny_url}} class="deny-btn">Não conheço esta empresa</a> -->
+      </div>
+
+      <div class="footer">
+        <p class="footer-main">
+          Adianta Pagamentos S.A. | CNPJ: 24.879.870/0001-40
+        </p>
+        <p class="footer-secondary">
+          Acesse a plataforma
+          <a href="https://app.adianta.com.br">Adianta</a> para mais
+          informações.
+        </p>
+      </div>
+
+      <div class="logo">
+        <a href="https://app.adianta.com.br">
+          <img
+            src="https://marketing-image-production.s3.amazonaws.com/uploads/b8b9ae86fa071b16c6e27e928a2f9155acde911fd9f3c867d5f099e908880f70a297aa55f114cde22ef6b3c70e3646602c382b66d250144f51658a91566a13d1.png"
+            style="width: 8rem;"
+          />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

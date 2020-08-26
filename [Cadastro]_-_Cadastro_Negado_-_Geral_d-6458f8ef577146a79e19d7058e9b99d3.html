@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assinar Termos de Adesão</title>
+    <style>
+      html,
+      body,
+      .container-global {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .container-global {
+        text-align: center;
+        background-color: #e3e7eb;
+        font-family: "Arial Regular", Arial, Helvetica, sans-serif;
+        color: #606060;
+        padding-top: 2rem;
+      }
+
+      .container {
+        width: 600px;
+        margin: auto !important;
+        background-color: white;
+        -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        margin: 1rem;
+        padding: 2rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .divider {
+        opacity: 0.25;
+        border-color: #e8e8e8;
+        width: 50%;
+      }
+
+      .approve-btn-container {
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .centered {
+        justify-content: center;
+      }
+
+      .approve-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 300px;
+
+        align-items: center;
+        border-radius: 5px;
+
+        padding: 0 1rem;
+        margin: 1rem auto;
+        background-color: #4ddcbe;
+        color: white;
+      }
+
+      .logo {
+        margin: 1rem auto;
+      }
+
+      p {
+        line-height: 24px;
+      }
+
+      .footer-main {
+        font-weight: 500;
+      }
+
+      .footer-secondary {
+        font-size: 0.7rem;
+      }
+      
+      .floating-div {
+          background-color: #4ddcbe;
+          height: .3rem;
+          width: 3rem;
+          margin: auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container-global">
+      <div class="container">
+        <img
+          src="https://marketing-image-production.s3.amazonaws.com/uploads/4b3a2f5c82d2b804f27f3599d8cf62d21fd9436abdd51cd9cb63e219ebee9c80892dc580b65c1e45e0459d98502c7189152f6eead061267ee7424d572a143df4.png"
+          alt="logo"
+          class="logo"
+        />
+        <div class="floating-div"></div>
+        <p style="font-size: 27px;">
+          Olá <strong>{{company_name}}</strong>, <br/>
+          seu <strong style="color: #4ddcbe; ">cadastro foi negado.</strong>
+        </p>
+
+        <hr class="divider" />
+
+        <p>
+         Agradecemos o seu interesse em utilizar nossos serviços. <br/>
+          No momento não foi possível enquadrá-lo em todos os critérios de aprovação. 
+          Assim que pudermos lhe atender, entraremos em contato para dar <br/> 
+          continuidade ao processo.
+        </p>
+
+        <hr class="divider" />
+
+
+        <!-- <a href={{deny_url}} class="deny-btn">Não conheço esta empresa</a> -->
+      </div>
+
+      <div class="footer">
+        <p class="footer-main">
+          Adianta Pagamentos S.A. | CNPJ: 24.879.870/0001-40
+        </p>
+        <p class="footer-secondary">
+          Acesse a plataforma
+          <a href="https://app.adianta.com.br">Adianta</a> para mais
+          informações.
+        </p>
+      </div>
+
+      <div class="logo">
+        <a href="https://app.adianta.com.br">
+          <img
+            src="https://marketing-image-production.s3.amazonaws.com/uploads/b8b9ae86fa071b16c6e27e928a2f9155acde911fd9f3c867d5f099e908880f70a297aa55f114cde22ef6b3c70e3646602c382b66d250144f51658a91566a13d1.png"
+            style="width: 8rem;"
+          />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

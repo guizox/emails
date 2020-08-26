@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assinar Termos de Adesão</title>
+    <style>
+      html,
+      body,
+      .container-global {
+        background-color: #e3e7eb;
+        margin: 0;
+        padding: 0;
+      }
+      .container-global {
+        text-align: center;
+        font-family: "Arial Regular", Arial, Helvetica, sans-serif;
+        color: #606060 !important;
+        padding-top: 2rem;
+      }
+
+      .container {
+        width: 600px;
+        margin: auto !important;
+        background-color: white;
+        -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        margin: 1rem;
+        padding: 2rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .divider {
+        opacity: 0.25;
+        border-color: #e8e8e8;
+        width: 50%;
+      }
+
+      .approve-btn-container {
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .centered {
+        justify-content: center;
+      }
+
+      .approve-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 300px;
+
+        align-items: center;
+        border-radius: 5px;
+
+        padding: 0 1rem;
+        margin: 1rem auto;
+        background-color: #4ddcbe;
+        color: white !important;
+      }
+
+      .logo {
+        margin: 1rem auto;
+      }
+
+      p {
+        line-height: 24px;
+      }
+
+      .footer-main {
+        font-weight: 500;
+      }
+
+      .footer-secondary {
+        font-size: 0.7rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-global">
+      <div class="container">
+        <img
+          src="https://marketing-image-production.s3.amazonaws.com/uploads/167bc4e01216c9be0be3a74b6360cb6240a51eaf3051a51b401b9e5848f81b60504c3c623c35e7031885f8c414fa4254695e5c7f4ff131f11c940027f13332b8.png"
+          alt="logo"
+          class="logo"
+        />
+        <p style="font-size: 27px;">
+          Olá <strong>{{ user_name }}</strong
+          >,
+        </p>
+
+        <hr class="divider" />
+
+        <p>
+          Recebemos um pedido de <strong>recuperação de senha</strong> em seu nome. </p>
+           Se você não fez essa solicitação, entre em contato conosco. 
+
+    Para continuar e alterar sua senha, clique no botão abaixo. <p> Este e-mail tem validade de 6 horas.
+
+Fique atento! Você deve abrir o link utilizando o navegador do <strong>Google Chrome.</strong> </p>
+
+        <hr class="divider" />
+
+        <span
+          target="_blank"
+          class="approve-btn-container"
+        >
+          <a class="approve-btn" style="height: 40px;text-decoration:none" href="{{recover_url}}">
+            <div style="margin: auto">
+              ALTERAR SENHA
+            </div >
+          </a>
+        </span>
+
+        <!-- <a href={{deny_url}} class="deny-btn">Não conheço esta empresa</a> -->
+      </div>
+
+      <div class="footer">
+        <p class="footer-main">
+          Adianta Pagamentos S.A. | CNPJ: 24.879.870/0001-40
+        </p>
+        <p class="footer-secondary">
+          Acesse a plataforma
+          <a href="https://app.adianta.com.br">Adianta</a> para mais
+          informações.
+        </p>
+      </div>
+
+      <div class="logo">
+        <a href="https://app.adianta.com.br">
+          <img
+            src="https://marketing-image-production.s3.amazonaws.com/uploads/b8b9ae86fa071b16c6e27e928a2f9155acde911fd9f3c867d5f099e908880f70a297aa55f114cde22ef6b3c70e3646602c382b66d250144f51658a91566a13d1.png"
+            style="width: 8rem;"
+          />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

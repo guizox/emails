@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif !important;
+        }
+    </style>
+    <![endif]-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        p.remove_link > a {
+            text-decoration: none !important;
+            color: #333333 !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        table table table {
+            table-layout: auto;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors], /* iOS */
+        .x-gmail-data-detectors, /* Gmail */
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Prevents underlining the button text in Windows 10 */
+        .button-link {
+            text-decoration: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            .email-container {
+                min-width: 320px !important;
+            }
+        }
+
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            .email-container {
+                min-width: 375px !important;
+            }
+        }
+
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 480px) {
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .fluid-height {
+                height: 70% !important;
+                max-height: 70% !important;
+                width: auto;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+
+            /* What it does: Adjust typography on small screens to improve readability */
+            .email-container p {
+                font-size: 17px !important;
+            }
+        }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG />
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+</head>
+<!--
+	The email background color (#222222) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail
+-->
+<body width="100%" bgcolor="#d7d7d7" style="margin: 0; mso-line-height-rule: exactly;">
+<center style="width: 100%; background: #d7d7d7; text-align: left;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#d7d7d7">
+        <tr>
+            <td>
+    <![endif]-->
+
+    <!-- Visually Hidden Preheader Text : BEGIN -->
+    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'Roboto', sans-serif;">
+        Operação Cancelada
+    </div>
+    <!-- Visually Hidden Preheader Text : END -->
+
+    <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+    <!-- Preview Text Spacing Hack : BEGIN -->
+    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'Roboto', sans-serif;">
+        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+    </div>
+    <!-- Preview Text Spacing Hack : END -->
+
+    <!--
+        Set the email width. Defined in two places:
+        1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 680px.
+        2. MSO tags for Desktop Windows Outlook enforce a 680px width.
+        Note: The Fluid and Responsive templates have a different width (600px). The hybrid grid is more "fragile", and I've found that 680px is a good width. Change with caution.
+    -->
+    <div style="max-width: 680px; margin: auto;" class="email-container">
+        <!--[if mso]>
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="680" align="center">
+            <tr>
+                <td>
+        <![endif]-->
+
+        <!-- Email Header : BEGIN -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%"
+               style="max-width: 680px;">
+            <tr>
+                <td style="padding: 20px 0; text-align: center">
+
+                </td>
+            </tr>
+        </table>
+        <!-- Email Header : END -->
+
+        <!-- Email Body : BEGIN -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%"
+               style="max-width: 680px;" class="email-container">
+
+            <!-- Hero Image, Flush : BEGIN -->
+            <tr>
+                <td bgcolor="#002850" align="center" height="100">
+                    <img src="https://marketing-image-production.s3.amazonaws.com/uploads/a7de9917355a357162589d0a350fc9caab3170bf11e3fa1d82be5088097f2ead77fa4b06365ac08c5e77ce23fca7ccb2f4a8caedf5c6214c2afa132bfeeaf12c.png"
+                         height="60" alt="alt_text" border="0" align="center"
+                         style="font-family: Roboto, sans-serif; font-size: 15px; line-height: 140%; color: #555555; margin: auto;"
+                         class="fluid-height g-img">
+                </td>
+            </tr>
+            <!-- Hero Image, Flush : END -->
+
+            <!-- 1 Column Text + Button : BEGIN -->
+            <tr>
+                <td bgcolor="#ffffff">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tr>
+                            <td style="padding: 40px 40px 20px; text-align: left;">
+                                <h1 style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 24px; line-height: 125%; color: #333333; font-weight: normal;">
+                                    Olá -company_name-,</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 40px 40px; font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 140%; color: #555555; text-align: left;">
+                                <p>Ocorreu um problema com seu borderô nº: <b>-loan_code-</b> e sua operação de adiantamento foi cancelada.</p>
+                                <p>Por favor aguarde que logo entraremos em contato para passar novas instruções.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 40px 10px; font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 120%; color: #555555; text-align: right;">
+                                <p>Pedimos desculpas pela inconveniência.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 40px 40px; font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 140%; color: #555555; text-align: right;">
+                                <p style="margin: 0;">Abraços ;)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 40px 40px; font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: right;">
+                                <p style="margin: 0;"><img width="30%"
+                                                           src="https://marketing-image-production.s3.amazonaws.com/uploads/b8b9ae86fa071b16c6e27e928a2f9155acde911fd9f3c867d5f099e908880f70a297aa55f114cde22ef6b3c70e3646602c382b66d250144f51658a91566a13d1.png" />
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!-- 1 Column Text + Button : END -->
+
+        </table>
+        <!-- Email Body : END -->
+
+        <!-- Email Footer : BEGIN -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%"
+               style="max-width: 680px;">
+            <!-- Thumbnail Right, Text Left : END -->
+            <tr>
+                <td align="center" valign="top" style="font-size:0; padding: 0">
+                    <!--[if mso]>
+                    <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                        <tr>
+                            <td align="left" valign="top" width="330">
+                    <![endif]-->
+                    <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:220px; vertical-align:top;"
+                         class="stack-column">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                               style="min-height: 60px">
+                            <tr>
+                                <td style="padding: 0">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="font-size: 14px;text-align: left; color: #333333">
+                                        <tr>
+                                            <td width="40" align="center">
+                                                <img src="https://marketing-image-production.s3.amazonaws.com/uploads/c3a67462cb69d3349f653129d02aa5e89fc79e9575e3fd58e860d891082f412ab5a1d8c51dae6ac2c116fe3496b2d988b0d3edaa4bc7ccfd408e92d919459da3.png"
+                                                     width="40" height="" border="0" alt="alt_text"
+                                                     class="center-on-narrow"
+                                                     style="width: 100%; max-width: 25px; height: auto; font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 140%; color: #555555; vertical-align: middle;">
+                                            </td>
+                                            <td>
+                                                <p style="padding-left: 5px; font-family: 'Roboto', sans-serif; font-size: 13px; text-decoration: none !important"
+                                                   class="remove_link">(11) 94821-8001</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--[if mso]>
+                    </td>
+                    <td align="left" valign="top" width="330">
+                    <![endif]-->
+                    <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:220px; vertical-align:top;"
+                         class="stack-column">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                               style="min-height: 60px">
+                            <tr>
+                                <td style="padding: 0">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="font-size: 14px;text-align: left; color:  #333333;">
+                                        <tr>
+                                            <td width="40" align="center">
+                                                <img src="https://marketing-image-production.s3.amazonaws.com/uploads/0781ce8f3995bfa5fee4b86061b87c2e603091cbdb9b02331da621fd89ee51dfd8cff1d70c889521d8ccd35d202f2e775cd9e058b10c67c69834b6eade064db3.png"
+                                                     width="40" height="" border="0" alt="alt_text"
+                                                     class="center-on-narrow"
+                                                     style="width: 100%; max-width: 25px; height: auto; font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 140%; color: #555555; vertical-align: middle;">
+                                            </td>
+                                            <td>
+                                                <p style="padding-left: 5px; font-family: 'Roboto', sans-serif; font-size: 13px; text-decoration: none !important"
+                                                   class="remove_link">(11) 2614-5260</p>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--[if mso]>
+                    </td>
+                    <td align="left" valign="top" width="330">
+                    <![endif]-->
+                    <div style="display:inline-block; margin: 0 -2px; width:100%; min-width:200px; max-width:220px; vertical-align:top;"
+                         class="stack-column">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                               style="min-height: 60px">
+                            <tr>
+                                <td style="padding: 0">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="font-size: 14px;text-align: left; color:  #333333">
+                                        <tr>
+                                            <td width="40">
+                                                <img src="https://marketing-image-production.s3.amazonaws.com/uploads/3147eeb452ef62eef67193c26115bc9b5c9236bf3f786643c29733714e44fa3d3ee4c518c0097ffc02079b814a20b344eeeeac7731a565453e9ec861efc37c49.png"
+                                                     width="40" height="" border="0" alt="alt_text"
+                                                     class="center-on-narrow"
+                                                     style="width: 100%; max-width: 30px; height: auto; font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 140%; color: #555555; vertical-align: middle;">
+                                            </td>
+                                            <td>
+                                                <p style="padding-left: 5px; font-family: 'Roboto', sans-serif; font-size: 13px; text-decoration: none !important"
+                                                   class="remove_link">atendimento@adianta.com.br</p>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--[if mso]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td aria-hidden="true" align="center">
+                    <div style="border-bottom: 1px solid white; margin: 0px; height: 1px; width: 100%;"></div>
+                </td>
+            </tr>
+
+
+        </table>
+        <!-- Email Footer : BEGIN -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%"
+               style="max-width: 680px;">
+            <tr>
+                <td align="center" valign="top" style="font-size:0; padding: 0">
+                    <!--[if mso]>
+                    <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="660">
+                        <tr>
+                            <td align="left" valign="top" width="330">
+                    <![endif]-->
+                    <div style="display:inline-block; margin: 0 -2px; width:100%; max-width:60px; vertical-align:top;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                               style="min-height: 60px">
+                            <tr>
+                                <td style="padding: 0">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="font-size: 14px;text-align: left; color: white">
+                                        <tr>
+                                            <td width="30">
+                                                <a href="https://www.linkedin.com/company/adiantabr/" target="_blank"
+                                                   style="text-decoration: none !important; color: white !important"><img
+                                                        src="https://marketing-image-production.s3.amazonaws.com/uploads/a90540753d832943c40295ddd799db2b549dee1c819f402bce20fbabcd22a3f3e5aa75ec841c2955292a3ea12e104d6f1ea40a1b7025a3dfeafc0b12ab83afab.png"
+                                                        width="30" height="" border="0" alt="alt_text"
+                                                        class="center-on-narrow"
+                                                        style="width: 100%; max-width: 30px; height: auto; font-family: 'Roboto', sans-serif; font-size: 13px; line-height: 140%; color: #555555; padding-left: 10px"></a>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--[if mso]>
+                    </td>
+                    <td align="left" valign="top" width="330">
+                    <![endif]-->
+                    <div style="display:inline-block; margin: 0 -2px; width:100%; max-width:60px; vertical-align:top;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                               style="min-height: 60px">
+                            <tr>
+                                <td style="padding: 0">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="font-size: 14px;text-align: left; color: white;">
+                                        <tr>
+                                            <td width="30">
+                                                <a href="https://www.facebook.com/adiantabr/" target="_blank"
+                                                   style="text-decoration: none !important; color: white !important"><img
+                                                        src="https://marketing-image-production.s3.amazonaws.com/uploads/706773a81a393191b903b1c66cc4317ef5e70d40ebab7a8ed5a5c4c7c141255e87c29543d0843b10a7f3ca83cac37b1f44e7089be8b6bbf82f8777cf9a672576.png"
+                                                        width="40" height="" border="0" alt="alt_text"
+                                                        class="center-on-narrow"
+                                                        style="width: 100%; max-width: 30px; height: auto; font-family: 'Roboto', sans-serif; font-size: 13px; line-height: 140%; color: #555555; padding-left: 10px"></a>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--[if mso]>
+                    </td>
+                    <td align="left" valign="top" width="330">
+                    <![endif]-->
+                    <div style="display:inline-block; margin: 0 -2px; width:100%; max-width:60px; vertical-align:top; padding-bottom: 20px"
+                         class="stack-column">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                               style="min-height: 60px">
+                            <tr>
+                                <td style="padding: 0">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="font-size: 14px;text-align: left; color: white">
+                                        <tr>
+                                            <td width="30">
+                                                <a href="https://twitter.com/adiantabr" target="_blank"
+                                                   style="text-decoration: none !important; color: white !important"><img
+                                                        src="https://marketing-image-production.s3.amazonaws.com/uploads/ab979f745a9ca9502bc3434295261ed0293b1030844d9a84f83f91048e3e6f0ec0df5d14835bb01bf4530e79b84a4cf6477ed00dcbe6a0ad11ac9044705dc7a9.png"
+                                                        width="30" height="" border="0" alt="alt_text"
+                                                        class="center-on-narrow"
+                                                        style="width: 100%; max-width: 30px; height: auto;  font-family: 'Roboto', sans-serif; font-size: 13px; line-height: 140%; color: #555555; padding-left: 10px"></a>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--[if mso]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+            </tr>
+        </table>
+        <!-- Email Footer : END -->
+
+        <!--[if mso]>
+        </td>
+        </tr>
+        </table>
+        <![endif]-->
+    </div>
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+</center>
+</body>
+</html>
