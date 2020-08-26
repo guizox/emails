@@ -38,11 +38,11 @@
             padding: 0 !important;
             height: 100% !important;
             width: 100% !important;
-            color: #606060;
+            color: #009cde;
         }
         
         h2 {
-          color: #44d7b6;
+          color: #515350;
           font-size: 24px;
           font-weight: bold;
         }
@@ -87,6 +87,8 @@
         /* What it does: Uses a better rendering method when resizing images in IE. */
         img {
             -ms-interpolation-mode:bicubic;
+            -webkit-filter: opacity(.1) drop-shadow(0 0 0 black);
+            filter: opacity(.9) drop-shadow(0 0 0 black);
         }
 
         /* What it does: A work-around for email clients meddling in triggered links. */
@@ -279,12 +281,12 @@
             <tr>
                 <td style="text-align: center">
                     <img src="https://marketing-image-production.s3.amazonaws.com/uploads/1bb40ecdc20ecfd88bf37a94c880099a95b92032f5b089e6d420372b9e4af3f58532c0b2393c7ea5fe4e9a01663ed92ebd8c20c2c9ca08b28dcdf7233ea9fb52.png" width="140" alt="alt_text" border="0" style="height: auto; font-family: sans-serif;">
-                    <hr style="margin-top: 20px; border: 0;	height: 5px;	width: 50px;	background-color: #44D7B6;" />
+                    <hr style="margin-top: 20px; border: 0;	height: 5px;	width: 50px;	background-color: #009cde;" />
                 </td>
             </tr>
             <tr>
                 <td style="text-align: center">
-                    <p style="font-family: arial; font-size: 24px; line-height: 28px; color: #606060">Olá, <strong>{{person_name}},</strong><br/>  seu cadastro na empresa {{company_name}} possui algumas <strong>pendências</strong>!</p>
+                    <p style="font-family: arial; font-size: 24px; line-height: 28px; color: #555555">Olá, <strong>{{person_name}},</strong><br/>  seu cadastro na empresa {{company_name}} possui algumas <strong>pendências</strong>!</p>
                 </td>
             </tr>
             <tr>
@@ -361,7 +363,7 @@
                                 <hr style="margin-bottom: 30px" class="divider" />
                                 <center>
                                   {{#if link}}
-                                  <div style="margin-bottom: 20px; width: 248px;height: 40px;line-height: 40px;background: rgb(77, 220, 190);border-radius: 5px;">
+                                  <div style="margin-bottom: 20px; width: 248px;height: 40px;line-height: 40px;background: #009cde;border-radius: 5px;">
                                     <a href="{{link}}" style="color: rgb(255, 255, 255);font-family: Arial;font-size: 16px;font-weight: 600;height: 17px;text-align: center;text-transform: uppercase;width: 190px;"><strong>CORRIGIR PENDÊNCIAS</strong></a>
                                   </div>
                                   {{/if}}
@@ -382,9 +384,9 @@
 	        <tr>
 	            <td style="padding: 10px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #606060;">
 	                <br><br>
-	                <span style="font-size: 16px">Adianta Pagamentos S.A | CNPJ: 24.879.870/0001-40</span><br>
+	                <span style="font-size: 16px">SkyOne Solutions | CNPJ: 19.093.204/0001-42</span><br>
 	                <span class="unstyle-auto-detected-links">Acesse a plataforma
-                    <a href="https://app.adianta.com.br">Adianta</a> para mais
+                    <a href="https://login.skysimple.com.br/">Sky.Simple</a> para mais
                     informações.<br/>
 	                </span>
 	                <br><br>
@@ -392,7 +394,7 @@
 	        </tr>
 	        <tr>
 	          <td style="text-align: center; padding-bottom: 20px">
-	            <img src="https://marketing-image-production.s3.amazonaws.com/uploads/b8b9ae86fa071b16c6e27e928a2f9155acde911fd9f3c867d5f099e908880f70a297aa55f114cde22ef6b3c70e3646602c382b66d250144f51658a91566a13d1.png" style="width: 20%;" />
+	            <img src="http://23.22.126.30/_skysimple/mail/images/simple2x.png" style="width: 20%;" />
 	          </td>
 	        </tr>
 	    </table>
