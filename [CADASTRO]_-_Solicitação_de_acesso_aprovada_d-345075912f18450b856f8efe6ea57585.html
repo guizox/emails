@@ -9,7 +9,7 @@
       html,
       body,
       .container-global {
-        height: 100vh;
+        height: 100%;
         margin: 0;
         padding: 0;
         background-color: #e3e7eb;
@@ -17,7 +17,7 @@
       .container-global {
         text-align: center;
         font-family: "Arial Regular", Arial, Helvetica, sans-serif;
-        color: #606060 !important;
+        color: #515350 !important;
         padding-top: 2rem;
       }
 
@@ -64,17 +64,18 @@
 
         padding: 0 1rem;
         margin: 1rem auto;
-        background-color: #4ddcbe;
+        background-color: #009cde;
         color: white !important;
       }
 
       .logo {
         margin: 1rem auto;
+        -webkit-filter: opacity(.5) drop-shadow(0 0 0 blue);
+        filter: opacity(.5) drop-shadow(0 0 0 blue);
       }
 
       p {
         line-height: 30px;
-        color: #606060;
       }
 
       .footer-main {
@@ -86,7 +87,7 @@
       }
 
       .floating-div {
-        background-color: #4ddcbe;
+        background-color: white;
         height: .3rem;
         width: 3rem;
         margin: auto;
@@ -103,7 +104,7 @@
         />
         <p style="font-size: 27px;">
           Olá <strong>{{ requester_user_name }}</strong>, <br/>
-          sua <strong style="color: #4ddcbe;">solicitação de acesso foi aprovada</strong>!
+          sua <strong style="color: #009cde;">solicitação de acesso foi aprovada</strong>!
         </p>
 
         <hr class="divider" />
@@ -130,19 +131,19 @@
 
       <div class="footer">
         <p class="footer-main">
-          Adianta Pagamentos S.A. | CNPJ: 24.879.870/0001-40
+          SkyOne Solutions | CNPJ: 19.093.204/0001-42
         </p>
         <p class="footer-secondary">
           Acesse a plataforma
-          <a href="https://app.adianta.com.br" style="text-decoration: none !important; color: inherit;">Adianta</a> para mais
+          <a href="https://login.skysimple.com.br/" style="text-decoration: none !important; color: inherit;">Sky.Simple</a> para mais
           informações.
         </p>
       </div>
 
       <div class="logo">
-        <a href="https://app.adianta.com.br">
+        <a href="https://login.skysimple.com.br/">
           <img
-            src="https://marketing-image-production.s3.amazonaws.com/uploads/b8b9ae86fa071b16c6e27e928a2f9155acde911fd9f3c867d5f099e908880f70a297aa55f114cde22ef6b3c70e3646602c382b66d250144f51658a91566a13d1.png"
+            src="http://23.22.126.30/_skysimple/mail/images/simple2x.png"
             style="width: 8rem;"
           />
         </a>

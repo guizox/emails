@@ -14,15 +14,15 @@
     <!--[if mso]>
     <style>
         * {
-            font-family: 'Roboto', sans-serif !important;
+            font-family: sans-serif !important;
         }
     </style>
     <![endif]-->
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
     <!--[if !mso]><!-->
     <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <!--<![endif]-->
 
     <!-- Web Font / @font-face : END -->
@@ -66,6 +66,11 @@
         p.remove_link > a {
             text-decoration: none !important;
             color: #333333 !important;
+        }
+        
+        span.white-link > a {
+          text-decoration: none !important;
+          color: white !important;
         }
 
         /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
@@ -121,7 +126,7 @@
             display: inline-block;
             margin-left: 16px;
             margin-bottom: 8px;
-            max-width: 20%;
+            max-width: 42%;
             vertical-align: top;
         }
 
@@ -254,19 +259,19 @@
 <center style="width: 100%; background: #E3E7EB; text-align: left;">
     <!--[if mso | IE]>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#E3E7EB">
-        <tr>
+        <tr> 
             <td>
     <![endif]-->
 
     <!-- Visually Hidden Preheader Text : BEGIN -->
-    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'Roboto', sans-serif;">
-        Sua prorrogação foi rejeitada!
+    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+
     </div>
     <!-- Visually Hidden Preheader Text : END -->
 
     <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
     <!-- Preview Text Spacing Hack : BEGIN -->
-    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'Roboto', sans-serif;">
+    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
         &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
     </div>
     <!-- Preview Text Spacing Hack : END -->
@@ -302,9 +307,9 @@
             <!-- Hero Image, Flush : BEGIN -->
             <tr>
                 <td bgcolor="#009cde" align="center" height="100">
-                    <img src="https://marketing-image-production.s3.amazonaws.com/uploads/7a30d2d03d660bc1c9a8953be9ba1dcfe34575dd181e936bc539ace9ee153bba04528ebca029c78b11420852884f3e8f51dc7da76ea69beaa0129982acced9de.png"
+                    <img src="https://marketing-image-production.s3.amazonaws.com/uploads/ffddfa51599ab9a87fa39177f23cd52701ef22afc4632434c058beb418ba7024d72574b71df151ba7bb0aeef6c4b028bc94bf282e5c9910e7fa1429f1527f753.png"
                          height="60" alt="alt_text" border="0" align="center"
-                         style="font-family: Roboto, sans-serif; font-size: 15px; line-height: 140%; color: #555555; margin: auto;"
+                         style="font-family: sans-serif; font-size: 15px; line-height: 140%; color: #555555; margin: auto;"
                          class="fluid-height g-img">
                 </td>
             </tr>
@@ -317,20 +322,20 @@
                         <tr>
                             <td style="padding: 40px 40px 20px; text-align: left;">
                                 <h1 style="margin: 0; font-family: 'Roboto', sans-serif; font-size: 24px; line-height: 125%; color: #515350; font-weight: normal;">
-                                    Olá -company_name-,</h1>
+                                    Olá, -company_name-</h1>
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding: 0 40px 40px; font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 140%; color: #515350; text-align: left;">
-                                <p>A prorrogação solicitada no dia -rollover_created_at- foi recusada e está cancelada.
-                                    Em caso de dúvidas, entre em contato com o nosso atendimento.</p>
+                            <td style="padding: 0 40px 20px; font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 140%; color: #515350; text-align: left;">
+                                <p>Recebemos o seu cadastro pelo site, mas infelizmente não poderemos dar continuidade ao processo. No momento não foi possível enquadrá-lo em todos os nossos critérios de concessão de crédito.</p>
+ 
+                                <p>Agradecemos o seu interesse pelos nossos serviços. Se futuramente pudermos lhe atender, entraremos em contato.</p>
+                                <p style="text-align: right">Abraços,</p>
+                            <p style="text-align: right">Time Sky.One</p>
                             </td>
                         </tr>
-                        <tr>
-                            <td style="padding: 0 40px 40px; font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 140%; color: #515350; text-align: right;">
-                                <p style="margin: 0;">Abraços ;)</p>
-                            </td>
-                        </tr>
+                        
+                        
                         <tr>
                             <td style="padding: 10px 20px 40px 20px; font-family: 'Roboto', sans-serif; font-size: 15px; line-height: 140%; color: #555555; text-align: right;">
                                 <p style="margin: 0;"><img width="30%"
@@ -554,6 +559,7 @@
             </tr>
         </table>
         <!-- Email Footer : END -->
+
         <!--[if mso]>
         </td>
         </tr>
